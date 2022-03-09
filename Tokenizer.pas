@@ -99,7 +99,7 @@ begin
         end;
       end;
       TParseState.sNumeral: begin
-        if not c1.IsDigit or not CharInSet(c1, ['e', 'E']) then begin
+        if not c1.IsDigit and not CharInSet(c1, ['e', 'E']) then begin
           State := TParseState.sNowhere;
         end;
       end;
