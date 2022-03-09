@@ -35,7 +35,7 @@ uses
 
 { TTokenizerTest }
 
-procedure TTokenizerTest.identifiers(const Text, Token: string; const Index: Integer);
+procedure TTokenizerTest.identifiers(const Text: string; const Token: string; const Index: Integer);
 begin
   Test(Text, Token, Index);
 end;
@@ -45,7 +45,7 @@ begin
   Test(Text, Token, Index);
 end;
 
-procedure TTokenizerTest.Test(const Text, Token: string; const Index: Integer);
+procedure TTokenizerTest.Test(const Text: string; const Token: string; const Index: Integer);
 begin
   var Tokens := TokenizeText(Text);
   var Actual := Tokens[Index];
