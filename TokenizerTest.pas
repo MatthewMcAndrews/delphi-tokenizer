@@ -39,6 +39,8 @@ type
     [TestCase('slash', '//a'#10#13',//a,0')]
     [TestCase('brace', '{a},{a},0')]
     [TestCase('paren', '(*a*),(*a*),0')]
+    [TestCase('nested', '(*{a}*),(*{a}*),0')]
+    [TestCase('contains string', '(*''a''*),(*''a''*),0')]
     procedure comment(const Text: string; const Token: string; const Index: Integer);
     [TestCase('not equal', '<>,<>,0')]
     [TestCase('dot', '.,.,0')]
