@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4333435B-DC67-46FE-8187-79BB2325F78A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TokenizeTests.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Tokenize.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TokenizeTests">
+        <MSBuild Projects="TokenizeTests.dproj"/>
+    </Target>
+    <Target Name="TokenizeTests:Clean">
+        <MSBuild Projects="TokenizeTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TokenizeTests:Make">
+        <MSBuild Projects="TokenizeTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Tokenize">
+        <MSBuild Projects="Tokenize.dproj"/>
+    </Target>
+    <Target Name="Tokenize:Clean">
+        <MSBuild Projects="Tokenize.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Tokenize:Make">
+        <MSBuild Projects="Tokenize.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TokenizeTests;Tokenize"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TokenizeTests:Clean;Tokenize:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TokenizeTests:Make;Tokenize:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
