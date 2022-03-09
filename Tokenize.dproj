@@ -83,6 +83,7 @@
         </DelphiCompile>
         <DCCReference Include="Main.pas"/>
         <DCCReference Include="FundamentalSyntacticElements.pas"/>
+        <DCCReference Include="Tokenizer.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

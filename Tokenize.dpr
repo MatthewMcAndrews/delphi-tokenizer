@@ -6,7 +6,8 @@ program Tokenize;
 uses
   System.SysUtils,
   Main in 'Main.pas',
-  FundamentalSyntacticElements in 'FundamentalSyntacticElements.pas';
+  FundamentalSyntacticElements in 'FundamentalSyntacticElements.pas',
+  Tokenizer in 'Tokenizer.pas';
 
 begin
   try
