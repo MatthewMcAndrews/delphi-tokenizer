@@ -113,7 +113,7 @@ begin
         end;
       end;
       TParseState.sComment_Slash: begin
-        if thing = #10#13 then begin
+        if CharInSet(c1, [#10, #13]) then begin
           State := TParseState.sNowhere;
         end;
       end;

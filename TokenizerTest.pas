@@ -36,7 +36,8 @@ type
     [TestCase('mixed', #10#13' ,'#10#13' ,0')]
     procedure blank(const Text: string; const Token: string; const Index: Integer);
     [TestCase('slash', '//a,//a,0')]
-    [TestCase('slash', '{a},{a},0')]
+    [TestCase('slash', '//a'#10#13',//a,0')]
+    [TestCase('brace', '{a},{a},0')]
     [TestCase('paren', '(*a*),(*a*),0')]
     procedure comment(const Text: string; const Token: string; const Index: Integer);
   private
