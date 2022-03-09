@@ -101,6 +101,7 @@ begin
       end;
       TParseState.sNumeral: begin
         if not c1.IsDigit
+        and not (c1 = '.')
         and not CharInSet(c1, ['e', 'E'])
         and not CharInSet(c1, HexaDecimalCharacters) then begin
           State := TParseState.sNowhere;
