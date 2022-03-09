@@ -40,6 +40,12 @@ type
     [TestCase('brace', '{a},{a},0')]
     [TestCase('paren', '(*a*),(*a*),0')]
     procedure comment(const Text: string; const Token: string; const Index: Integer);
+    [TestCase('not equal', '<>,<>,0')]
+    [TestCase('dot', '.,.,0')]
+    procedure special_characters(const Text: string; const Token: string; const Index: Integer);
+    [TestCase('plain', '{$M+},{$M+},0')]
+    [TestCase('with arg', '{$IFDEF TRUE},{$IFDEF TRUE},0')]
+    procedure compiler_directive(const Text: string; const Token: string; const Index: Integer);
   private
     procedure Test(const Text: string; const Token: string; const Index: Integer);
   end;
@@ -61,6 +67,11 @@ begin
   Test(Text, Token, Index);
 end;
 
+procedure TTokenizerTest.compiler_directive(const Text: string; const Token: string; const Index: Integer);
+begin
+  Test(Text, Token, Index);
+end;
+
 procedure TTokenizerTest.control_string(const Text: string; const Token: string; const Index: Integer);
 begin
   Test(Text, Token, Index);
@@ -77,6 +88,11 @@ begin
 end;
 
 procedure TTokenizerTest.quoted_string(const Text: string; const Token: string; const Index: Integer);
+begin
+  Test(Text, Token, Index);
+end;
+
+procedure TTokenizerTest.special_characters(const Text: string; const Token: string; const Index: Integer);
 begin
   Test(Text, Token, Index);
 end;
