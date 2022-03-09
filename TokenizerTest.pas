@@ -11,6 +11,8 @@ type
   public
     [TestCase('integer', '0,0,0')]
     [TestCase('scientific notation', '1e2,1e2,0')]
+    [TestCase('hexadecimal', '$0aF,$0aF,0')]
+    [TestCase('negative hexadecimal', '-$0aF,-$0aF,0')]
     procedure numbers(const Text: string; const Token: string; const Index: Integer);
   end;
 

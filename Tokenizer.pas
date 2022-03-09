@@ -49,6 +49,7 @@ begin
     end;
     var thing := c0 + c1;
     { state entry conditions }
+    const HexaDecimalCharacters: TSysCharSet = ['$', 'a'..'f', 'A'..'F'];
     if State = TParseState.sNowhere then begin
       if c0 = '''' then begin
         State := TParseState.sQuotedString;
@@ -56,8 +57,8 @@ begin
         State := TParseState.sControlString;
       end else if c0.IsWhiteSpace then begin
         State := TParseState.sBlank;
-      end else if c0.IsDigit
-      or (CharInSet(c0, ['+', '-']) and c1.IsDigit) then begin
+      end else if c0.IsDigit or (CharInSet(c0, ['+', '-', '$'])
+      and (c1.IsDigit) or CharInSet(c1, HexaDecimalCharacters)) then begin
         State := TParseState.sNumeral;
       end else if c0.IsLetter or (c0 = '_') then begin
         State := TParseState.sIdentifier;
@@ -99,7 +100,9 @@ begin
         end;
       end;
       TParseState.sNumeral: begin
-        if not c1.IsDigit and not CharInSet(c1, ['e', 'E']) then begin
+        if not c1.IsDigit
+        and not CharInSet(c1, ['e', 'E'])
+        and not CharInSet(c1, HexaDecimalCharacters) then begin
           State := TParseState.sNowhere;
         end;
       end;
