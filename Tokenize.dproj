@@ -82,6 +82,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="Main.pas"/>
+        <DCCReference Include="FundamentalSyntacticElements.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -123,7 +124,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Debug\Tokenize.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="Bin\Tokenize.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Tokenize.exe</RemoteName>
                         <Overwrite>true</Overwrite>
