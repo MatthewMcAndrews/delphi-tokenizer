@@ -13,7 +13,7 @@ uses
   DUnitX.Loggers.Xml.NUnit,
   {$ENDIF }
   DUnitX.TestFramework,
-  TokenizeTest in 'TokenizeTest.pas';
+  TokenizerTest in 'TokenizerTest.pas';
 
 begin
   {$IFDEF TESTINSIGHT}

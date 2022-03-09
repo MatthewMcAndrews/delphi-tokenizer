@@ -1,4 +1,4 @@
-unit TokenizeTest;
+unit TokenizerTest;
 
 interface
 
@@ -7,7 +7,7 @@ uses
 
 type
   [TestFixture]
-  TTokenizeTest = class
+  TTokenizerTest = class
   public
     [Test]
     procedure something;
@@ -15,14 +15,14 @@ type
 
 implementation
 
-{ TTokenizeTest }
+{ TTokenizerTest }
 
-procedure TTokenizeTest.something;
+procedure TTokenizerTest.something;
 begin
 //  Assert.AreEqual([], );
 end;
 
 initialization
-  TDUnitX.RegisterTestFixture(TTokenizeTest);
+  TDUnitX.RegisterTestFixture(TTokenizerTest);
 
 end.

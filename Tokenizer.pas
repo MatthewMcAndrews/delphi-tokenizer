@@ -3,6 +3,7 @@ unit Tokenizer;
 interface
 
 function TokenizeFile(const FileName: string): TArray<string>;
+function TokenizeText(const Text: string): TArray<string>;
 
 implementation
 
@@ -31,8 +32,13 @@ type
 
 function TokenizeFile(const FileName: string): TArray<string>;
 begin
-  Result := [];
   var Text := TFile.ReadAllText(FileName);
+  Result := TokenizeText(Text);
+end;
+
+function TokenizeText(const Text: string): TArray<string>;
+begin
+  Result := [];
   var Token: string;
   var State := TParseState.sNowhere;
   for var i := 1 to Text.Length do begin
