@@ -24,6 +24,21 @@ type
     [TestCase('underscore alphanumeric', '_a1,_a1,0')]
     [TestCase('middle underscore', 'a_a,a_a,0')]
     procedure identifiers(const Text: string; const Token: string; const Index: Integer);
+    [TestCase('new line', '#10,#10,0')]
+    procedure control_string(const Text: string; const Token: string; const Index: Integer);
+    [TestCase('plain', '''a'',''a'',0')]
+    [TestCase('contains slash comment', '''a // b'',''a // b'',0')]
+    [TestCase('contains brace comment', '''a {b}'',''a {b}'',0')]
+    [TestCase('contains paren comment', '''a (*b*)'',''a (*b*)'',0')]
+    procedure quoted_string(const Text: string; const Token: string; const Index: Integer);
+    [TestCase('space', ' , ,0')]
+    [TestCase('newline', #10#13','#10#13',0')]
+    [TestCase('mixed', #10#13' ,'#10#13' ,0')]
+    procedure blank(const Text: string; const Token: string; const Index: Integer);
+    [TestCase('slash', '//a,//a,0')]
+    [TestCase('slash', '{a},{a},0')]
+    [TestCase('paren', '(*a*),(*a*),0')]
+    procedure comment(const Text: string; const Token: string; const Index: Integer);
   private
     procedure Test(const Text: string; const Token: string; const Index: Integer);
   end;
@@ -35,12 +50,32 @@ uses
 
 { TTokenizerTest }
 
+procedure TTokenizerTest.blank(const Text: string; const Token: string; const Index: Integer);
+begin
+  Test(Text, Token, Index);
+end;
+
+procedure TTokenizerTest.comment(const Text: string; const Token: string; const Index: Integer);
+begin
+  Test(Text, Token, Index);
+end;
+
+procedure TTokenizerTest.control_string(const Text: string; const Token: string; const Index: Integer);
+begin
+  Test(Text, Token, Index);
+end;
+
 procedure TTokenizerTest.identifiers(const Text: string; const Token: string; const Index: Integer);
 begin
   Test(Text, Token, Index);
 end;
 
 procedure TTokenizerTest.numbers(const Text: string; const Token: string; const Index: Integer);
+begin
+  Test(Text, Token, Index);
+end;
+
+procedure TTokenizerTest.quoted_string(const Text: string; const Token: string; const Index: Integer);
 begin
   Test(Text, Token, Index);
 end;

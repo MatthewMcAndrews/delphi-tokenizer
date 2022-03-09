@@ -58,15 +58,15 @@ begin
       end else if c0.IsWhiteSpace then begin
         State := TParseState.sBlank;
       end else if c0.IsDigit or (CharInSet(c0, ['+', '-', '$'])
-      and (c1.IsDigit) or CharInSet(c1, HexaDecimalCharacters)) then begin
+      and ((c1.IsDigit) or CharInSet(c1, HexaDecimalCharacters))) then begin
         State := TParseState.sNumeral;
       end else if c0.IsLetter or (c0 = '_') then begin
         State := TParseState.sIdentifier;
-      end else if thing = '\\' then begin
+      end else if thing = '//' then begin
         State := TParseState.sComment_Slash;
       end else if thing = '{$' then begin
         State := TParseState.sCompilerDirective;
-      end else if thing = '{' then begin
+      end else if c0 = '{' then begin
         State := TParseState.sComment_Brace;
       end else if thing = '(*' then begin
         State := TParseState.sComment_Paren;
@@ -128,7 +128,7 @@ begin
         end;
       end;
       TParseState.sComment_Paren: begin
-        if thing = '*)' then begin
+        if Token.EndsWith('*') and (c0 = ')') then begin
           State := TParseState.sNowhere;
         end;
       end;
@@ -150,6 +150,10 @@ begin
       Result := Result + [Token];
       Token := '';
     end;
+  end;
+  if Token.Length <> 0 then begin
+    Result := Result + [Token];
+    Token := '';
   end;
 end;
 
