@@ -18,6 +18,14 @@ type
     [TestCase('hexadecimal', '$0aF,$0aF,0')]
     [TestCase('negative hexadecimal', '-$0aF,-$0aF,0')]
     procedure numbers(const Text: string; const Token: string; const Index: Integer);
+    [TestCase('alpha', 'a,a,0')]
+    [TestCase('alphanumeric', 'a1,a1,0')]
+    [TestCase('underscore', '_,_,0')]
+    [TestCase('underscore alphanumeric', '_a1,_a1,0')]
+    [TestCase('middle underscore', 'a_a,a_a,0')]
+    procedure identifiers(const Text: string; const Token: string; const Index: Integer);
+  private
+    procedure Test(const Text: string; const Token: string; const Index: Integer);
   end;
 
 implementation
@@ -27,7 +35,17 @@ uses
 
 { TTokenizerTest }
 
+procedure TTokenizerTest.identifiers(const Text, Token: string; const Index: Integer);
+begin
+  Test(Text, Token, Index);
+end;
+
 procedure TTokenizerTest.numbers(const Text: string; const Token: string; const Index: Integer);
+begin
+  Test(Text, Token, Index);
+end;
+
+procedure TTokenizerTest.Test(const Text, Token: string; const Index: Integer);
 begin
   var Tokens := TokenizeText(Text);
   var Actual := Tokens[Index];
