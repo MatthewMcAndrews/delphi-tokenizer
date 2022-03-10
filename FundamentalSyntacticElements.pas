@@ -13,6 +13,32 @@ type
     tDeclaration, { definitions of identifiers that can be used in expressions and statements }
     tStatement { algorithmic actions that can be executed within a program }
   );
+  { ends with a semicolon }
+  TDeclaration = (
+    dHintDirecticve, { e.g. deprecated; experimental; }
+    dVariable,
+    dConstant,
+    dType,
+    dField,
+    dProperty,
+    dProcedure,
+    dFunction,
+    dProgram,
+    dUnit,
+    dLibrary,
+    dPackage
+  );
+  TStatement = (
+    sAssignment, { variable := expression }
+    sProcedureCall, { name; name(arg); name(arg1,...); }
+    sFunctionCall,
+    sGotoJump { goto label, label: statement, label label1, label2; }
+  );
+  TVariable = (
+    vVariableTypecast,
+    vDereferencedPointer,
+    vStructuredVariableComponent
+  );
   TState = (
     sToken,
     sSeparator
